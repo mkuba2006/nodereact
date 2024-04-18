@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body{
+    padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header{
+    font-size: 50px;
+    margin-bottom: 60px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+form{
+    width: min-content;
+    padding: 10px 25px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+#title{
+    margin-bottom: 15px;
+    font-size: 25px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul{
+    padding: 25px 0;
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: auto;
 }
 
-.App-link {
-  color: #61dafb;
+ul li{
+    width: 300px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px;
+    background: RGBA(0, 0, 0, 0.06);
+    margin: 5px 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li:hover{
+    background: RGBA(0, 0, 0, 0.16);
+}
+
+#color{
+    position: absolute;
+    transform: translateX(-16px);
+    width: 11px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transition: 0.3s;
+}
+#data{
+    padding-left: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+#delete{
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+}
+svg{
+    transition: 0.3s;
+}
+
+#delete:hover svg{
+    scale: 1.2;
+}
+
+
+
+
+input{
+    margin-bottom: 10px;
 }
