@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import User from '../UI/user';
 
-
 const UserList = ({ handleDeleteUser, hoveredUserId, handleMouseEnter, handleMouseLeave }) => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +29,14 @@ const UserList = ({ handleDeleteUser, hoveredUserId, handleMouseEnter, handleMou
       ) : (
         <ul>
           {users.map((user) => (
-            <User key={user.id} user={user} hoveredUserId={hoveredUserId} handleDeleteUser={handleDeleteUser} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
+            <User
+              key={user.id} // Assuming each user object has an 'id' property
+              user={user}
+              hoveredUserId={hoveredUserId}
+              handleDeleteUser={handleDeleteUser}
+              handleMouseEnter={handleMouseEnter}
+              handleMouseLeave={handleMouseLeave}
+            />
           ))}
         </ul>
       )}
