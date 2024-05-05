@@ -5,10 +5,16 @@ body{
 }
 
 header{
-    font-size: 50px;
+    font-size: 20px;
     margin-bottom: 60px;
+    gap: 25px;
 }
-
+header a{
+    margin: 10px;
+    border-radius: 20px;
+    padding: 2px 10px;
+    background-color: #CDE8E5;
+}
 form{
     width: min-content;
     padding: 10px 25px;

@@ -11,13 +11,7 @@ function PasswordInput({ value, onChange }) {
 
   return (
     <InputGroup size="md" width="300px">
-      <Input
-        pr="4.5rem"
-        type={show ? 'text' : 'password'}
-        placeholder="Enter password"
-        value={value}
-        onChange={handleChange}
-      />
+      <Input pr="4.5rem" type={show ? 'text' : 'password'} placeholder="Enter password" value={value} onChange={handleChange}/>
       <InputRightElement width="100px">
         <Button h="1.75rem" size="sm" onClick={handleClick}>
           {show ? 'Hide' : 'Show'}

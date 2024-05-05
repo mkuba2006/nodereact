@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Form from './form/form';
-import UserList from './list/list';
-import Search from './search_user/search_user';
+import Form from './components/form/form';
+import UserList from './components/list/list';
+import Search from './components/search_user/search_user';
+import { Link } from '@chakra-ui/react';
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -26,6 +27,8 @@ const App = () => {
       setIsLoading(false);
     }
   };
+
+
 
   const AddUser = async (e) => {
     e.preventDefault();
@@ -53,7 +56,12 @@ const App = () => {
 
   return (
     <div>
-      <header>Lista użytkowników</header>
+      <header>
+        Lista użytkowników
+        <Link to='/Form'>Add User</Link>
+        <Link to='/UserList'>List</Link>
+        <Link to='/Search'>Search</Link>
+      </header>
       <Form name={name} password={password} onNameChange={setName} onPasswordChange={setPassword} onSubmit={AddUser} />
       <UserList users={users} handleDeleteUser={DelUser} hoveredUserId={hoveredUserId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} isLoading={isLoading} />
       <Search/>

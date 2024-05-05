@@ -24,19 +24,10 @@ const UserList = ({ handleDeleteUser, hoveredUserId, handleMouseEnter, handleMou
 
   return (
     <div>
-      {isLoading ? (
-        <p>Ładowanie...</p>
-      ) : (
+      {isLoading ? (<p>Ładowanie...</p>) : (
         <ul>
           {users.map((user) => (
-            <User
-              key={user.id} // Assuming each user object has an 'id' property
-              user={user}
-              hoveredUserId={hoveredUserId}
-              handleDeleteUser={handleDeleteUser}
-              handleMouseEnter={handleMouseEnter}
-              handleMouseLeave={handleMouseLeave}
-            />
+            <User key={user.id} user={user} hoveredUserId={hoveredUserId} handleDeleteUser={handleDeleteUser} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
           ))}
         </ul>
       )}
