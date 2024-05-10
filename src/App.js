@@ -12,10 +12,6 @@ const App = () => {
   const [hoveredUserId, setHoveredUserId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
@@ -53,6 +49,10 @@ const App = () => {
 
   const handleMouseEnter = (userId) => {setHoveredUserId(userId)};
   const handleMouseLeave = () => {setHoveredUserId(null)};
+
+  useEffect(() => {
+    fetchUsers();
+  }, [AddUser,DelUser]);
 
   return (
     <div>

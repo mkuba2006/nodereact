@@ -5,3 +5,10 @@
 #s_inp{
     width: 200px;
 }
+
+#task{
+    background-color: aqua;
+    margin: 5px;
+    padding: 4px;
+    width: 200px;
+}
