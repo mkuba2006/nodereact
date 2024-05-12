@@ -1,11 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { ChakraProvider } from '@chakra-ui/react';
+import store from './store/store'
 import UserList from './App';
-import { ChakraProvider } from '@chakra-ui/react'
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <ChakraProvider>
-      <UserList />
-  </ChakraProvider>
-);
 
+ReactDOM.render(
+  <Provider store={store}>
+    <ChakraProvider>
+      <UserList />
+    </ChakraProvider>
+  </Provider>,
+  document.getElementById('root')
+);

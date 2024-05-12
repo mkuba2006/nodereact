@@ -3,8 +3,16 @@ import { Input, Button, Box, Text, Alert, AlertIcon, List } from '@chakra-ui/rea
 import axios from 'axios';
 import Task from './tasks';
 import AddTask from './add_task';
+import { useDispatch,useSelector } from 'react-redux';
+import { Slice } from '../../store/slices'
+import { moze } from '../../store/slices-actions';
+
+
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const x = useSelector((state) => state.user.res.Name);
+
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [searchResult, setSearchResult] = useState(null);
@@ -46,6 +54,9 @@ const Search = () => {
 
   const submit = async (e) => {
     e.preventDefault();
+    dispatch(moze(name, password));
+    console.log(x);
+
     try {
       const response = await axios.get(`http://localhost:4000/search?name=${name}&password=${password}`);
       setSearchResult(response.data);
