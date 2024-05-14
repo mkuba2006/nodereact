@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import User from '../UI/user';
+import { useDispatch } from 'react-redux';
+import { fetchUsers } from '../../store/slices-actions';
 
 const UserList = ({ handleDeleteUser, hoveredUserId, handleMouseEnter, handleMouseLeave }) => {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+  const [users2, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers2();
+  }, [dispatch]);
 
-  const fetchUsers = async () => {
+  const fetchUsers2 = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:4000/users');
-      setUsers(response.data);
+      setUsers(await dispatch(fetchUsers()));
     } catch (error) {
       console.error('Błąd pobierania danych:', error);
     } finally {
@@ -23,15 +25,13 @@ const UserList = ({ handleDeleteUser, hoveredUserId, handleMouseEnter, handleMou
   };
 
   return (
-    <div>
+    <ul>
       {isLoading ? (<p>Ładowanie...</p>) : (
-        <ul>
-          {users.map((user) => (
-            <User key={user.id} user={user} hoveredUserId={hoveredUserId} handleDeleteUser={handleDeleteUser} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
-          ))}
-        </ul>
+        users2.map((user) => (
+          <User key={user.id} user={user} hoveredUserId={hoveredUserId} handleDeleteUser={handleDeleteUser} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
+        ))
       )}
-    </div>
+    </ul>
   );
 };
 

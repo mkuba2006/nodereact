@@ -3,32 +3,26 @@ import { Input, Button, Box, Text, Alert, AlertIcon, List } from '@chakra-ui/rea
 import axios from 'axios';
 import Task from './tasks';
 import AddTask from './add_task';
-import { useDispatch,useSelector } from 'react-redux';
-import { Slice } from '../../store/slices'
+import { useDispatch, useSelector } from 'react-redux';
 import { moze } from '../../store/slices-actions';
-
-
 
 const Search = () => {
   const dispatch = useDispatch();
-  const x = useSelector((state) => state.user.res.Name);
-
+  const { res } = useSelector((state) => state.user);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [searchResult, setSearchResult] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(null);
-  const [see, setsee] = useState(false);
+  const [see, setSee] = useState(false);
+
   useEffect(() => {
     if (searchResult && name) {
       fetchTasks();
     }
-  }, [searchResult, name]);
+  }, [searchResult]);
 
-  const seeTasks = () => {
-    setsee(prev=>!prev)
-  };
-  
+  const toggleSee = () => setSee((prev) => !prev);
 
   const fetchTasks = async () => {
     try {
@@ -42,8 +36,7 @@ const Search = () => {
   const handleAddTask = async (newTask) => {
     const { title, description } = newTask;
     try {
-      const params = { name, password, title, description };
-      if (searchResult && searchResult.id) { params.id = searchResult.id};
+      const params = { name, password, title, description, id: searchResult?.id };
       const response = await axios.get(`http://localhost:4000/addtask`, { params });
       setTasks([...tasks, response.data]);
     } catch (err) {
@@ -54,12 +47,9 @@ const Search = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    dispatch(moze(name, password));
-    console.log(x);
-
     try {
-      const response = await axios.get(`http://localhost:4000/search?name=${name}&password=${password}`);
-      setSearchResult(response.data);
+      const actionResult = await dispatch(moze(name, password));
+      setSearchResult(actionResult);
       setError(null);
     } catch (err) {
       setSearchResult(null);
@@ -78,8 +68,7 @@ const Search = () => {
 
       {error && (
         <Alert status="error" mt={4} width={'350px'}>
-          <AlertIcon />
-          {error}
+          <AlertIcon />{error}
         </Alert>
       )}
 
@@ -87,11 +76,11 @@ const Search = () => {
         <Box mt={4}>
           <Text>User found: {searchResult.id} {searchResult.Name}</Text>
           <AddTask onAddTask={handleAddTask} />
-          <Button key={name} onClick={seeTasks}>Tasks</Button> 
+          <Button key={name} onClick={toggleSee}>Tasks</Button> 
           {see && (
             <List>
               {tasks.map((task) => (
-                <Task key={task.id} task={task} />
+                <Task key={Math.random()} task={task} />
               ))}
             </List>
           )}
