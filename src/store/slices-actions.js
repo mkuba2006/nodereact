@@ -30,7 +30,33 @@ export const fetchUsers = () => {
 };
 
 
+export const Add_User = (name, password) => {
+  return async (dispatch) =>{
+    try {
+      const response = await axios.post('http://localhost:4000/add', { Name: name, Password: password });
+      dispatch(Slice.add_user({users: response.data}));
+      return {name, password};
+    } catch (error) {
+      console.log('Błąd podczas dodawania użytkownika:', error);
+    }
+  }
+};
 
+
+
+
+
+// const AddUser = async (e) => {
+//   e.preventDefault();
+//   try {
+//     await axios.post('http://localhost:4000/add', { Name: name, Password: password });
+//     setName('');
+//     setPassword('');
+//     fetchUsers2();
+//   } catch (error) {
+//     console.log('Błąd podczas dodawania użytkownika:', error);
+//   }
+// };
 
 
 // const fetchTasks = async () => {

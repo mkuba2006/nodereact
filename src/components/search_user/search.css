@@ -7,8 +7,29 @@
 }
 
 #task{
-    background-color: aqua;
-    margin: 5px;
+    margin: 2px;
     padding: 4px;
     width: 200px;
+    border-bottom: 1px solid green;
+}
+#search{
+   display: flex;
+   margin-top: 5%;
+   align-items: center;
+   flex-direction: column;
+}
+#tytul{
+    font-size: 25px;
+}
+
+
+#s_inp{
+    width: 250px;
+}
+
+#tytul_task{
+    font-size: 15px;
+}
+h6{
+    font-size: 15px;
 }

@@ -22,8 +22,8 @@ function AddTask({ onAddTask }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <Input placeholder='Title' size='md' width='300px' value={title} onChange={handleChangeTitle}/>
-            <Input placeholder='Description' size='md' width='300px' value={description} onChange={handleChangeDescription}/>
+            <Input id='form_inp' placeholder='Title' size='md' width={'220px'}  value={title} onChange={handleChangeTitle}/>
+            <Input id='form_inp' placeholder='Description' size='md' width={'220px'}  value={description} onChange={handleChangeDescription}/>
             <Button type='submit'>Submit</Button>
         </form>
     );

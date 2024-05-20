@@ -5,6 +5,9 @@ import Task from './tasks';
 import AddTask from './add_task';
 import { useDispatch, useSelector } from 'react-redux';
 import { moze } from '../../store/slices-actions';
+import './search.css'
+
+
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -58,23 +61,23 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div id='search'>
       <form onSubmit={submit} id='search_form'>
-        <h1>Search User</h1>
-        <Input variant='outline' placeholder='Name' id='s_inp' value={name} onChange={(e) => setName(e.target.value)} width={'220px'} />
-        <Input variant='outline' placeholder='Password' id='s_inp2' type='password' value={password} onChange={(e) => setPassword(e.target.value)} width={'220px'} />
+        <h1 id='tytul'>Search User</h1>
+        <Input variant='outline' placeholder='Name' id='s_inp' value={name} onChange={(e) => setName(e.target.value)} />
+        <Input variant='outline' placeholder='Password' id='s_inp' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
         <Button type="submit" colorScheme='green'>Search</Button>
       </form>
 
       {error && (
-        <Alert status="error" mt={4} width={'350px'}>
+        <Alert status="error" mt={4} fontSize='md' width={'350px'}>
           <AlertIcon />{error}
         </Alert>
       )}
 
       {searchResult && (
         <Box mt={4}>
-          <Text>User found: {searchResult.id} {searchResult.Name}</Text>
+          <Text>User found: <b> {searchResult.Name}</b></Text>
           <AddTask onAddTask={handleAddTask} />
           <Button key={name} onClick={toggleSee}>Tasks</Button> 
           {see && (

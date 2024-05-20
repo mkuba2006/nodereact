@@ -18,6 +18,11 @@ const search = createSlice({
       const { users } = action.payload;
       state.users = users; 
       console.log("users:", users);
+    },
+    add_user: (state, action) => {
+      const { users } = action.payload;
+      state.users = users; 
+      console.log("users:", users);
     }
   },
 });

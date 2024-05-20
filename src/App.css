@@ -4,6 +4,14 @@ body{
     padding: 20px;
 }
 
+#App{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
 header{
     font-size: 20px;
     margin-bottom: 60px;
